@@ -24,17 +24,7 @@
         "name": "Transport Layer Security",
         "class": "chapter",
         "part": 1,
-        "chapter": 1,
-        "children": [
-            {
-                "name": "A Brief History of Secure Data Transport",
-                "id": "tls-brief-history"
-            },
-            {
-                "name": "How Does Key Exchange Work Today?",
-                "id": "tls-key-exchange"
-            }
-        ]
+        "chapter": 1
     },
     {
         "src": "1_02_dos_mitigation/index.md",
@@ -79,5 +69,41 @@
                 "id": "sanitizing-best-practices"
             }
         ]
+    },
+    {
+        "src": "1_04_api_keys/index.md",
+        "file": "1_04_api_keys/index.xhtml",
+        "id": "api-keys",
+        "name": "Managing API Keys",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 4
+    },
+    {
+        "src": "1_05_authentication/index.md",
+        "file": "1_05_authentication/index.xhtml",
+        "id": "authn",
+        "name": "Authentication",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 5
+    },
+    {
+        "src": "1_06_authorization/index.md",
+        "file": "1_06_authorization/index.xhtml",
+        "id": "authz",
+        "name": "Authorization",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 6
+    },
+    {
+        "src": "1_07_api_gateways/index.md",
+        "file": "1_07_api_gateways/index.xhtml",
+        "id": "gateways",
+        "name": "API Gateways",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 7
     }
 ]

@@ -237,6 +237,13 @@ img {
 
 /* style settings specific to this book */
 
+.chapter-author {
+  font-size: 1.2em;
+  font-style: italic;
+  margin-bottom: 2em;
+  margin-top: -1em;
+}
+
 q::before {
   content: "\201C";
 }
