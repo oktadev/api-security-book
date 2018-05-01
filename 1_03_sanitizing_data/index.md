@@ -6,8 +6,12 @@ The inputs to your application represent the most significant surface area of at
 
 Any time data crosses a trust boundary - the boundary between any two systems - it should be validated and handled with care. For example, a trust boundary would be any input from an HTTP request, data returned from a database, or calls to remote APIs.
 
-Let’s start with a simple example: a user submission to the popular internet forum, Reddit.  A user could try to include a malicious string in a comment such as: `<img src onerror='alert("haxor")'>`.  If this were rendered as is, in an HTML page, it would pop up an annoying message to the user.  However, to get around this, when Reddit displays the text to the user, it is escaped: `&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;` which will make the comment appear as visible text instead of HTML.
+Let’s start with a simple example: a user submission to the popular internet forum, Reddit.  A user could try to include a malicious string in a comment such as: `<img src onerror='alert("haxor")'>`.  If this were rendered as is, in an HTML page, it would pop up an annoying message to the user.  However, to get around this, when Reddit displays the text to the user, it is escaped: `&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;` which will make the comment appear as visible text instead of HTML, as shown in <a href="#fig_sanitizing_reddit" class="figref"></a>.
 
+<figure id="fig_sanitizing_reddit">
+  <img src="__DIR__/images/reddit.png" alt=""/>
+  <figcaption>Reddit properly escapes user input</figcaption>
+</figure>
 
 In this example the trust boundary is obvious as any user input should not be trusted.
 
@@ -23,10 +27,10 @@ There are a few different approaches you can use when validating input:
 
 The known good strategy is often the easiest and most foolproof of the given options. With this approach each input is validated against an expected type and format:
 
-Data type, (Integers are Integers, booleans are booleans, etc)
-Numeric values fall within an expected range (for example: a person’s age is always greater than zero and less than 150)
-Field length is checked
-Specially formatted string fields such as zipcode, phone number, and social security number are valid
+* Data type, (Integers are Integers, booleans are booleans, etc)
+* Numeric values fall within an expected range (for example: a person’s age is always greater than zero and less than 150)
+* Field length is checked
+* Specially formatted string fields such as zipcode, phone number, and social security number are valid
 
 Most web frameworks have some type of declarative support to validate input fields built in. For example,  in the Node.js world you can use the popular `validator` package to validate different types of input:
 
@@ -39,7 +43,7 @@ validator.isEmail('foobar@example.com');
 
 Rejecting known invalid inputs is more complicated than only accepting known good inputs (which we talked about above) and far less accurate.  This strategy is typically implemented as a blacklist of strings or patterns.  This technique may require many regular expressions to be run against a single field which may also affect the speed of your application. It also means that this blacklist will require updates any time a new pattern needs to be blocked.
 
-Take a typical use-case of blocking ‘bad-words'.  This problem is incredibly complex as language usage varies across locale. These complexities can be demonstrated using the simple word: `ass`. It would be pretty easy to block this word alone, but doing so would also block the proper use of the word referring to donkeys. Then you need to think about both variations of the word and where those letters happen to come together: 'badass,' 'hard-ass,' 'amass,' 'bagasse', the first two are questionable while the second two are fine. Even if you block all of these and the thousands of other words that contain these three letters, there are still variations that would make it past: ‘4ss’, ‘as.s,’ ‘azz,’ ‘@ss,’ ’āss,’ or ‘\41\73\73’ (escaped characters). As time goes on the list of blocked words would increase raising the total cost of the solution.
+Take a typical use-case of blocking ‘bad-words’.  This problem is incredibly complex as language usage varies across locale. These complexities can be demonstrated using the simple word: `ass`. It would be pretty easy to block this word alone, but doing so would also block the proper use of the word referring to donkeys. Then you need to think about both variations of the word and where those letters happen to come together: ‘badass,’ ‘hard-ass,’ ‘amass,’ ‘bagasse’, the first two are questionable while the second two are fine. Even if you block all of these and the thousands of other words that contain these three letters, there are still variations that would make it past: ‘4ss’, ‘as.s,’ ‘azz,’ ‘@ss,’ ’āss,’ or ‘\41\73\73’ (escaped characters). As time goes on the list of blocked words would increase raising the total cost of the solution.
 
 Another famous example of this technique is antivirus software. Your antivirus updates every few days to get a new blacklist of items to scan. And we all know how well that works ;)
 
@@ -52,26 +56,38 @@ Sanitizing inputs can be a good option when the input format is not strict but s
 When sanitizing data with a whitelist, only valid characters/strings matching a given pattern are kept.  For example, when validating a phone number there are multiple formats people use, US phone numbers could be written as `555-123-1245`, `(555) 123-1245`, `555.123.1245`, or a similar combination. Running any of these through a whitelist that only allows numeric characters would leave `5551231245`.
 
 ### Sanitize Input Using a Blacklist
-A blacklist, of course, is the exact opposite of a whitelist. A blacklist can be used to strip HTML `<script>` tags or other non-conforming text from inputs before using input values.  This technique suffers from the same shortcomings of the above Rejecting Bad Inputs section. This type of sanitization must be done recursively until the value no longer changes. For example to if the value `<scr<scriptipt …` is only processed once the result would be still contain `<script`, if done recursively, the result would be `...`.
+A blacklist, of course, is the exact opposite of a whitelist. A blacklist can be used to strip HTML `<script>` tags or other non-conforming text from inputs before using input values.  This technique suffers from the same shortcomings of the above section, <a href="#sanitizing-reject-bad" class="section">Rejecting Bad Inputs</a>. This type of sanitization must be done recursively until the value no longer changes. For example if the value <code>&lt;scr<b>&lt;script</b>ipt foo bar</code> is only processed once the result would be still contain `<script`, but if done recursively, the result would be `foo bar`.
 
 ### Sanitize Input Using Escaping
 Escaping input is one of the easiest and best ways to deal with free-form text.  Essentially, instead of trying to determine the parts of the input that are safe (as with the above strategies), you assume the input is unsafe. There are a few different ways to encode strings depending on how the value is used:
 
-HTML/XML Encoding
-Example Input: `<img src onerror='alert("haxor")'>`
-Result: `&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;`
+#### HTML/XML Encoding
+Example Input:<br>
+`<img src onerror='alert("haxor")'>`
 
-HTML/XML Attribute Encoding
-Example Input: `<div attr="" injectedAttr="a value here"><div attr="">`
-Result:`<div attr="&quot;&nbsp;injectedAttr&#61;&quot;a&nbsp;value&nbsp;here&quot;&gt;&lt;div attr=&quot;">`
+Result:<br>
+`&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;`
 
-JSON Encoding
-Example Input: `{"key": "", anotherKey": "anotherValue"}`
-Result: `{"key": "\", anotherKey\": \"anotherValue\""}`
+#### HTML/XML Attribute Encoding
+Example Input:<br>
+`<div attr="" injectedAttr="a value here"><div attr="">`
 
-Base64 Encoding
-Example Input: `any random string or binary data`
-Result: `YW55IHJhbmRvbSBzdHJpbmcgb3IgYmluYXJ5IGRhdGE=`
+Result:<br>
+`<div attr="&quot;&nbsp;injectedAttr&#61;&quot;a&nbsp;value
+&nbsp;here&quot;&gt;&lt;div attr=&quot;">`
+
+#### JSON Encoding
+Example Input:<br>
+`{"key": "", anotherKey": "anotherValue"}`
+
+Result:<br>
+`{"key": "\", anotherKey\": \"anotherValue\""}`
+
+#### Base64 Encoding
+Example Input:<br>`any random string or binary data`
+
+Result:<br>
+`YW55IHJhbmRvbSBzdHJpbmcgb3IgYmluYXJ5IGRhdGE=`
 
 There are ways to escape just about any format you need SQL, CSV, LDAP, etc.
 
@@ -103,18 +119,21 @@ Similarly, the user could enter `jcoder OR 1=1` which would query for a user wit
 
 The cause of this issue is the use of poor string concatenation.  In the example above, the value of the `userId` input crosses a trust boundary and ends up getting executed. The best way around this is to use SQL prepared statements.  The syntax for using prepared statements varies from language to language but the gist is that the above query would become `SELECT * FROM Users WHERE UserId = ?`.  The question mark would be replaced with the input value and be evaluated as a string instead of changing the query itself.
 
-Most web frameworks and ORM libraries provide tools to protect against SQL injection attacks, be sure to look through your developer library documentation to ensure you're using these tools properly.
+Most web frameworks and ORM libraries provide tools to protect against SQL injection attacks, be sure to look through your developer library documentation to ensure you’re using these tools properly.
 
 ### XSS - Cross Site Scripting
 A cross-site scripting attack (XSS) is an attack that executes code in a web page viewed by a user. There are three different types of XSS attacks:
 
-Stored XSS - A persisted (in a database, log, etc) payload is rendered to an HTML page. For example, content on an forum.
-Reflected XSS - Attack payload is submitted by a user, the rendered server response contains the executed code. This differs from Stored XSS where as the attack payload is not persisted, but instead delivered as part of the request, eg. a link: `http://example.com/login?userId=<script>alert(document.cookie)</script>`
-DOM based XSS - The attack payload is executed as the result of an HTML page’s DOM changing. With DOM based XSS the attack payload may not leave the victim's browser. The client side Javascript is exploited.
+* **Stored XSS** - A persisted (in a database, log, etc) payload is rendered to an HTML page. For example, content on an forum.
+* **Reflected XSS** - Attack payload is submitted by a user, the rendered server response contains the executed code. This differs from Stored XSS where as the attack payload is not persisted, but instead delivered as part of the request, eg. a link: `http://example.com/login?userId=<script>alert(document.cookie)</script>`
+* **DOM based XSS** - The attack payload is executed as the result of an HTML page’s DOM changing. With DOM based XSS the attack payload may not leave the victim’s browser. The client side Javascript is exploited.
 
-There are [tons of resources online](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) that cover this topic in great detail, so I’ll only provide a basic example here. Earlier in this chapter the string `<img src onerror='alert("haxor")'>` was posted as a Reddit comment. If this string isn't correctly escaped it would have resulted in an annoying popup:
+There are [tons of resources online](https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29) that cover this topic in great detail, so I’ll only provide a basic example here. Earlier in this chapter the string `<img src onerror='alert("haxor")'>` was posted as a Reddit comment. If this string isn’t correctly escaped it would have resulted in an annoying popup, shown in <a href="#fig_sanitizing_alert" class="figref"></a>.
 
-
+<figure id="fig_sanitizing_alert">
+  <img src="__DIR__/images/alert.png" alt="">
+  <figcaption>A JavaScript alert popup</figcaption>
+</figure>
 
 You may see `alert()` used throughout examples when describing these attacks. The idea is if you can cause an alert to happen in the browser, you can execute other code that does something more malicious like sends your information (cookie, session ID, or other personal info) to a remote site.
 
@@ -160,7 +179,8 @@ foo=bar&key=value
 ```
 
 You can see right away: request headers are user input too.  Imagine for a moment that an HTTP client maliciously changes the User-Agent header. The logged User-Agent may falsely identify a request as coming from a different client application than the one in which it really originated.originated from. While that’s unlikely to affect the current request, it might cause confusion in the application’s logging and reporting system.
-Further, the User-Agent could be visible from an internal web application that doesn't sanitize the User-Agent values before displaying them. In this case, an HTTP client could maliciously modify their User-Agent to any JavaScript code they want which would then be executed in an internal user's browser via XSS.
+
+Further, the User-Agent could be visible from an internal web application that doesn’t sanitize the User-Agent values before displaying them. In this case, an HTTP client could maliciously modify their User-Agent to any JavaScript code they want which would then be executed in an internal user’s browser via XSS.
 
 
 As these examples illustrate, even sanitizing relatively innocuous inputs is an important part of an overall security strategy.
@@ -169,7 +189,7 @@ As these examples illustrate, even sanitizing relatively innocuous inputs is an 
 
 While this chapter provides an overview of a few common types of attacks; there are many more out there.
 
-First, you don’t need to be an expert to prevent these attacks, but you do need to have some knowledge of them. The Open Web Application Security Project at [OWASP.org](https://owasp.org) is a great source information and examples on how to secure your application, often in multiple programming languages.
+First, you don’t need to be an expert to prevent these attacks, but you do need to have some knowledge of them. The Open Web Application Security Project at <a href="https://owasp.org" class="url">OWASP.org</a> is a great source information and examples on how to secure your application, often in multiple programming languages.
 
 One of the most straightforward means of prevention is not to reinvent the wheel, and use an existing framework. Most frameworks contain tools to properly escape values, both on the frontend and backend, when used correctly.
 
