@@ -1,0 +1,639 @@
+/*
+frontcover
+halftitlepage: contains the title of the book
+titlepage: contains the title of the book, name of author(s) and publisher
+imprint: left page with copyright, publisher, library printing information
+dedication: right page with short dedication
+foreword: written by someone other than the author(s)
+toc: table of contents
+preface: preface, including acknowledgements
+chapter: each chapter is given its own DIV element
+references: contains list of references
+appendix: each appendix is given its own
+bibliography
+glossary
+index
+colophon: describes how the book was produced
+backcover
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif|Lato|Source+Code+Pro:400,700);
+
+@page {
+  margin: 15mm 15mm 18mm 15mm;
+  size: 148mm 210mm;
+
+  @footnotes {
+    border-top: thin solid black;
+    padding-top: 0.3em;
+    margin-top: 0.6em;
+    margin-left: 0.6em;
+  }
+}
+
+@page :left {
+  margin-right: 18mm;
+}
+@page :right {
+  margin-left: 18mm;
+}
+
+
+/* define default page and names pages: cover, blank, frontmatter */
+
+@page :left {
+  @bottom-left {
+    font: 8pt "Proxima Nova", serif;
+    content: counter(page);
+    vertical-align: top;
+    padding-top: 2em;
+  }
+  @bottom-right {
+    font: 8pt "Proxima Nova", serif;
+    content: "Chapter " counter(chapter-number) ": " string(chapter-title);
+    vertical-align: top;
+    padding-top: 2em;
+    text-align: right;
+  }
+}
+
+@page :right {
+  @bottom-left {
+    font: 8pt "Proxima Nova", serif;
+    content: "Chapter " counter(chapter-number) ": " string(chapter-title);
+    text-align: left;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+  @bottom-right {
+    font: 8pt "Proxima Nova", serif;
+    content: counter(page);
+    text-align: right;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page appendix :left {
+  @bottom-right {
+    content: "Appendix: " string(appendix-title);
+  }
+}
+@page appendix :right {
+  @bottom-left {
+    content: "Appendix: " string(appendix-title);
+  }
+}
+
+@page cover {
+  margin: 0;
+}
+@page cover :left {
+  @bottom-left {
+    content: normal;
+  }
+  @bottom-right {
+    content: normal;
+  }
+}
+
+@page title {
+  @bottom-right { content: normal }
+  @bottom-left { content: normal }
+}
+.titlepage h1, .titlepage h2, .titlepage h3 {
+  text-align: right;
+}
+
+
+@page frontmatter :left {
+  @bottom-right {
+    content: normal;
+  }
+  @bottom-left {
+    font: 8pt "Proxima Nova", serif;
+    content: counter(page, lower-roman);
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page frontmatter :right {
+  @bottom-left {
+    content: normal;
+  }
+  @bottom-right {
+    font: 8pt "Proxima Nova", serif;
+    content: counter(page, lower-roman);
+    text-align: right;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page part :left {
+  @bottom-left { content: normal; }
+  @bottom-right { content: normal; }
+}
+
+@page part :right {
+  @bottom-left { content: normal; }
+  @bottom-right { content: normal; }
+}
+
+@page toc :left {
+  @bottom-right {
+    font: 8pt "Proxima Nova", serif;
+    content: "API Security";
+    text-align: right;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+  @bottom-left {
+    font: 8pt "Proxima Nova", serif;
+    content: counter(page, lower-roman);
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page toc :right {
+  @bottom-left {
+    font: 8pt "Proxima Nova", serif;
+    content: "API Security";
+    vertical-align: top;
+    padding-top: 2em;
+  }
+  @bottom-right {
+    font: 8pt "Proxima Nova", serif;
+    content: counter(page, lower-roman);
+    text-align: right;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page blank :left {
+  @bottom-right { content: normal }
+  @bottom-left { content: normal }
+}
+
+@page blank :right {
+  @bottom-left { content: normal }
+  @bottom-right { content: normal }
+}
+
+/* settings on generic elements */
+
+html {
+  margin: 0;
+  font: 10pt/1.26 "Droid Serif", sans-serif;
+}
+
+body {
+  margin: 0 0 0 0;
+}
+
+.avoid-pagebreak, pre.avoid-pagebreak {
+  page-break-inside: avoid;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Proxima Nova", sans-serif;
+  margin: 2em 0 0.5em 0;
+  page-break-after: avoid;
+}
+
+h1 {
+  padding: 2em 0 2em 0;
+  margin: 0;
+  font-size: 2.4em;
+  font-weight: bold;
+  page-break-before: right;
+}
+
+.part h1 {
+  padding-top: 6em;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* style settings specific to this book */
+
+q::before {
+  content: "\201C";
+}
+
+q::after {
+  content: "\201D";
+}
+
+p {
+  margin: 0;
+  orphans: 2;
+  widows: 2;
+}
+p + p {
+  /* text-indent: 1.3em */
+  margin-top: 0.8em;
+}
+p.sidenote + p, p.caption, p.art { text-indent: 0 }
+
+p.author {
+  margin-top: 2em;
+  text-indent: 0;
+  text-align: right;
+}
+
+pre {
+  margin: 1em 1.3em;
+  font-size: 0.9em;
+}
+
+pre.small {
+  font-size: 0.8em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a.url {
+  font-style: italic;
+}
+a.external::after {
+  content: " (" attr(href) ")";
+  font-style: italic;
+}
+
+/* cross-references */
+
+a.section::after { content: " on page " target-counter(attr(href), page); }
+
+a.chapter {
+  font-style: italic;
+}
+a.chapter::before {
+  font-style: normal;
+  content: "Chapter " target-counter(attr(href), chapter-number) ", ";
+}
+a.chapter.noname::before {
+  content: "Chapter " target-counter(attr(href), chapter-number);
+}
+a.chapter::after { content: ","; }
+a.chapter.end::after { content: ""; }
+
+a.chapternum { content: target-counter(attr(href), chapter-number); }
+
+a.pageref { content: "(page " target-counter(attr(href), page) ")"; }
+a.figref { content: "Figure " target-counter(attr(href), chapter-number) "-" target-counter(attr(href), figure); }
+a.tableref { content: " Table " target-counter(attr(href), figure); }
+
+/* sidenotes */
+
+.sidenote {
+  float: left;
+  clear: left;
+  margin: 0 0 1em -41%;
+  width: 37%;
+  font-size: 0.9em;
+  font-style: normal;
+  text-indent: 0;
+  text-align: right;
+  page-break-inside: avoid;
+}
+
+/* sidebars */
+
+div.sidebar {
+  float: top-next;
+  margin: 1.2em 0 1.2em 0;
+  border: thin solid;
+  background: #CCC;
+  padding: 0.5em 1em;
+  page-break-inside: avoid;
+  column-count: 2;
+  column-gap: 1.5em;
+}
+
+div.sidebar h2 {
+  margin-top: 0;
+}
+
+/* figures and tables */
+
+section.chapter {
+  counter-reset: figure;
+}
+
+figure {
+  margin: 1em 0;
+  counter-increment: figure;
+  text-align: center;
+}
+
+figure img {
+  border: 0.5pt #333 solid;
+}
+
+figure figcaption {
+  font-size: 0.9em;
+  font-style: italic;
+  text-align: center;
+}
+
+figure figcaption::before {
+  content: "Figure " counter(chapter-number) "-" counter(figure) ": ";
+  font-weight: bold;
+}
+
+figure.table figcaption::before {
+  content: "Table " counter(table) ": ";
+  font-weight: bold;
+}
+
+figure.table {
+  margin: 1em 0;
+  counter-increment: table;
+}
+
+table th {
+  text-align: left;
+}
+
+table th, table td {
+  text-align: left;
+  padding-right: 1em;
+}
+
+table.lined td, table.lined th {
+  border-top: none;
+  border-bottom: thin dotted;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+
+/* footnotes */
+
+.footnote {
+  display: none;                   /* default rule */
+
+  display: prince-footnote;        /* prince-specific rules */
+  position: footnote;
+  footnote-style-position: inside;
+
+  counter-increment: footnote;
+  margin-left: 1.4em;
+  font-size: 80%;
+  line-height: 1.4;
+}
+
+.footnote::footnote-call {
+  vertical-align: super;
+  font-size: 80%;
+}
+
+.footnote::footnote-marker {
+  vertical-align: super;
+  color: black;
+  font-size: 80%;
+  padding-right: 0.4em;
+}
+
+
+/* which section uses which named page */
+section.frontcover, section.backcover { page: cover }
+section.imprint { page: blank }
+section.halftitlepage, section.titlepage { page: title }
+section.frontmatter, section.foreword, section.preface, section.dedication, section.background { page: frontmatter }
+section.toc { page: toc; }
+section.appendix { page: appendix; }
+section.part { page: blank; }
+
+/* page breaks */
+
+section.frontcover, section.backcover, section.halftitlepage, section.titlepage { page-break-before: right }
+section.imprint, section.dedication, section.background { page-break-before: always }
+section.frontmatter, section.foreword, section.toc, section.preface, section.chapter, section.reference,
+section.appendix, section.bibliography, section.glossary, section.index, section.colophon {
+  page-break-before: always
+}
+section.backcover { page-break-before: left }
+
+section.dedication h1 {
+  page-break-before: auto;
+}
+
+.break-before, pre.break-before {
+  page-break-before: always;
+}
+
+/* titlepage, halftitlepage */
+
+section.titlepage h1, section.halftitlepage h1 { margin-bottom: 2em; }
+section.titlepage h2, section.halftitlepage h2 { font-size: 1.2em; margin-bottom: 3em; }
+section.titlepage h3, section.halftitlepage h3 { font-size: 1em; margin-bottom: 3em; }
+section.titlepage p, section.halftitlepage p {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0; padding: 0;
+}
+
+section.imprint {
+  padding-top: 4em;
+}
+
+
+/* TOC */
+
+ul.toc, ul.toc ul {
+  list-style-type: none;
+  margin: 0; padding: 0;
+}
+ul.toc ul {
+  margin-left: 2.5em;
+  font-weight: normal;
+}
+ul.toc > li {
+  font-weight: bold;
+  margin-bottom: 0.7em;
+}
+ul.toc li.chapter a::after {
+  content: leader('.') target-counter(attr(href), page);
+  font-style: normal;
+}
+ul.toc > li.frontmatter a::after {
+  content: leader('.') target-counter(attr(href), page, lower-roman);
+  font-style: normal;
+}
+ul.toc > li.chapter {
+  counter-increment: toc-chapter;
+}
+ul.toc > li.chapter::before {
+  content: counter(toc-chapter, decimal) ". ";
+  display: block;
+  margin: 0 0.5em 0.1em 0;
+  float: left;
+  font-weight: normal;
+  page-break-after: avoid;
+}
+ul.toc > li.part {
+  counter-increment: toc-part;
+}
+ul.toc li.part {
+  font-family: "Proxima Nova";
+  font-size: 1.2em;
+  border-top: 1px #000 solid;
+  padding-top: 0.25em;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+ul.toc li.part::before {
+  content: "Part " counter(toc-part, upper-roman) ". ";
+}
+ul.toc > li li:last-child, ul.toc > li li:first-child {
+  /* avoid leaving the last child of a nested list on the next page */
+  page-break-before: avoid;
+}
+ul.toc > li.appendix a::before {
+  content: "Appendix: ";
+}
+ul.toc > li.appendix a::after {
+  content: leader('.') target-counter(attr(href), page);
+  font-style: normal;
+}
+
+/* chapter numbers */
+
+section.part {
+  counter-increment: part-number;
+}
+
+section.chapter {
+  counter-increment: chapter-number;
+}
+
+h1::before {
+  border-bottom: 1pt #000 solid;
+  display: block;
+  white-space: pre;
+  margin-left: 0;
+  font-size: 50%;
+  content: "\B0  \B0  \B0  \B0  \B0 \A";  /* ornaments */
+}
+
+.frontcover h1::before, .backcover h1::before, .titlepage h1::before, .halftitlepage h1::before {
+  content: normal;                  /* that is, none */
+}
+
+section.chapter h1::before {
+  content: "Chapter " counter(chapter-number, decimal) " \A";
+}
+
+section.part h1::before {
+  content: "Part " counter(part-number, upper-roman) " \A";
+}
+
+/* .chapter h1 { string-set: header "Chapter " counter(chapter) ": " content(); } */
+section.chapter h1 {
+  string-set: chapter-title content();
+}
+section.appendix h1 {
+  string-set: appendix-title content();
+}
+h2 {
+  string-set: header content();
+}
+
+blockquote {
+  page-break-inside: avoid;
+  position: relative;
+  font-style: italic;
+  font-size: 1.2em;
+}
+blockquote::before {
+  content: "“";
+  font-family: "Droid Serif";
+  font-style: normal;
+  font-size: 80pt;
+  color: #aaaaaa;
+  position: absolute;
+  left: -50px;
+  top: -20px;
+}
+blockquote .author {
+  margin-top: 1em;
+  text-align: right;
+}
+blockquote .author::before {
+  content: "— ";
+}
+
+.aside {
+  width: 40%;
+  float: right;
+  border-top: 2pt #999 solid;
+  border-bottom: 2pt #999 solid;
+  padding: 8pt;
+  margin-left: 2pt;
+  margin-top: 2pt;
+  margin-bottom: 2pt;
+  font-style: italic;
+  font-size: 0.9em;
+  page-break-inside: avoid;
+}
+.aside h5 {
+  margin-top: 0;
+  font-style: normal;
+}
+
+/* index */
+
+ul.index {
+  list-style-type: none;
+  margin: 0; padding: 0;
+  column-count: 2;
+  column-gap: 1em;
+}
+
+ul.index a::after { content: ", " target-counter(attr(href), page); }
+
+pre, code {
+  font-family: "Source Code Pro";
+}
+
+code.element, code.attribute {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 80%;
+}
+code.property { font-weight: bold }
+code, code.css, code.value, code.declaration {
+
+}
+
+@media screen, handheld {
+  html { margin: 3em; font: 16px "Proxima Nova", sans-serif; }
+  h1 { margin-bottom: 0.5em }
+  .frontcover, .backcover, .halftitlepage,
+  .foreword, .index { display: none }
+}
+

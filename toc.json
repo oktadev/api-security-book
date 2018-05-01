@@ -1,0 +1,83 @@
+[
+    {
+        "src": "0_01_acknowledgments/index.md",
+        "file": "0_01_acknowledgments/index.xhtml",
+        "id": "acknowledgments",
+        "name": "Acknowledgments",
+        "class": "frontmatter",
+        "part": 0,
+        "chapter": 1
+    },
+    {
+        "src": "0_02_foreword/index.md",
+        "file": "0_02_foreword/index.xhtml",
+        "id": "foreword",
+        "name": "Foreword",
+        "class": "frontmatter",
+        "part": 0,
+        "chapter": 2
+    },
+    {
+        "src": "1_01_tls/index.md",
+        "file": "1_01_tls/index.xhtml",
+        "id": "tls",
+        "name": "Transport Layer Security",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 1,
+        "children": [
+            {
+                "name": "A Brief History of Secure Data Transport",
+                "id": "tls-brief-history"
+            },
+            {
+                "name": "How Does Key Exchange Work Today?",
+                "id": "tls-key-exchange"
+            }
+        ]
+    },
+    {
+        "src": "1_02_dos_mitigation/index.md",
+        "file": "1_02_dos_mitigation/index.xhtml",
+        "id": "dos",
+        "name": "DOS Mitigation Strategies",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 2
+    },
+    {
+        "src": "1_03_sanitizing_data/index.md",
+        "file": "1_03_sanitizing_data/index.xhtml",
+        "id": "sanitizing",
+        "name": "Sanitizing Data",
+        "class": "chapter",
+        "part": 1,
+        "chapter": 3,
+        "children": [
+            {
+                "name": "Accept Known Good",
+                "id": "sanitizing-accept-good"
+            },
+            {
+                "name": "Reject Bad Inputs",
+                "id": "sanitizing-reject-bad"
+            },
+            {
+                "name": "Sanitize Inputs",
+                "id": "sanitizing-inputs"
+            },
+            {
+                "name": "Common Attacks",
+                "id": "sanitizing-common-attacks"
+            },
+            {
+                "name": "Look For Other Attack Vectors",
+                "id": "sanitizing-attack-vectors"
+            },
+            {
+                "name": "Best Practices for Secure Data",
+                "id": "sanitizing-best-practices"
+            }
+        ]
+    }
+]

@@ -1,0 +1,11 @@
+{
+  "require": {
+    "mf2/mf2": "^0.4.0",
+    "michelf/php-markdown": "^1.8"
+  },
+  "autoload": {
+    "files": [
+      "lib/helpers.php"
+    ]
+  }
+}
