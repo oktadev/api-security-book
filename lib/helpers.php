@@ -27,12 +27,19 @@ function get_name_id_from_html($html) {
   ];
 }
 
-function parse_markdown_chapter($part, $chapter, $markdown) {
+function parse_markdown_chapter($filename, $part, $chapter) {
+  $markdown = file_get_contents($filename);
+
   $html = MarkdownExtra::defaultTransform($markdown);
   $info = get_name_id_from_html($html);
 
   // Remove the h1 from the markdown source
   $markdown = preg_replace('/^# .+/', '', $markdown);
+
+  // Replace __DIR__ with reference to the directory
+  $dir = relative_dir(dirname($filename));
+  $markdown = str_replace('__DIR__', $dir, $markdown);
+
   $html = MarkdownExtra::defaultTransform($markdown);
 
   ob_start();

@@ -22,7 +22,7 @@ foreach($chapters as $chapterfile) {
   else
     $class = 'chapter';
 
-  $info = parse_markdown_chapter($partnum, $chapternum, file_get_contents($chapterfile));
+  $info = parse_markdown_chapter($chapterfile, $partnum, $chapternum);
   $html = $info['html'];
 
   $item = [

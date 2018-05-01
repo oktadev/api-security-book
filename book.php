@@ -52,8 +52,7 @@ $toc = json_decode(file_get_contents('toc.json'), true);
 <?
 foreach($toc as $chapter) {
   if(preg_match('/.md$/', $chapter['src'])) {
-    $info = parse_markdown_chapter($chapter['part'],
-      $chapter['chapter'], file_get_contents($chapter['src']));
+    $info = parse_markdown_chapter($chapter['src'], $chapter['part'], $chapter['chapter']);
     echo $info['html'];
   } else {
     include($chapter['src']);
