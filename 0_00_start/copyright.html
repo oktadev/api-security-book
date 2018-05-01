@@ -1,0 +1,25 @@
+<section class="imprint" id="copyright">
+<h2>API Security</h2>
+
+<p>by the Developer Team at Okta</p>
+
+<p>Copyright © <?= date('Y') ?> by Okta, Inc.</p>
+
+<p>Published by Okta, Inc. 301 Brannan Street, San Francisco, CA, 94107</p>
+
+<br/><br/><br/><br/>
+
+<p style="font-size: 0.8em;">While every precaution has been taken in the preparation of this book, the publisher and the authors assume no responsibility for errors or omissions, or for damages resulting from the use of the information contained herein.</p>
+
+<br/><br/>
+<?php if($MODE == 'pdf'): ?>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<?php endif ?>
+
+<p>ISBN: <?= $MODE == 'pdf' ? '978-1-387-78313-7' : '' ?></p>
+
+<p><?= date('y').sprintf('%03d',(date('z')+1)).'.'.date('Hi') ?></p>
+
+<p>First Edition</p>
+</section>
