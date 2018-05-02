@@ -77,7 +77,25 @@
         "name": "Managing API Credentials",
         "class": "chapter",
         "part": 1,
-        "chapter": 4
+        "chapter": 4,
+        "children": [
+            {
+                "name": "Keep Your Credentials Private",
+                "id": "api-keys-private"
+            },
+            {
+                "name": "\"What Kind of API Token Should I Use?\"",
+                "id": "api-keys-what-kind"
+            },
+            {
+                "name": "Other Options for Authentication to Your API Service",
+                "id": "api-keys-other-options"
+            },
+            {
+                "name": "Advanced API Token Considerations",
+                "id": "api-keys-advanced"
+            }
+        ]
     },
     {
         "src": "1_05_authentication/index.md",

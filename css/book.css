@@ -104,6 +104,19 @@ backcover
 .titlepage h1, .titlepage h2, .titlepage h3 {
   text-align: right;
 }
+.titlepage .author-list {
+  font-size: 10pt;
+  text-align: right;
+  font-family: "Proxima Nova", sans-serif;
+}
+.titlepage ul {
+  font-family: "Proxima Nova", sans-serif;
+  list-style-type: none;
+  text-align: right;
+}
+.titlepage ul li {
+  margin-bottom: 0.5em;
+}
 
 
 @page frontmatter :left {
