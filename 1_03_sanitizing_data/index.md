@@ -6,7 +6,19 @@ The inputs to your application represent the most significant surface area of at
 
 Any time data crosses a trust boundary - the boundary between any two systems - it should be validated and handled with care. For example, a trust boundary would be any input from an HTTP request, data returned from a database, or calls to remote APIs.
 
-Let’s start with a simple example: a user submission to the popular internet forum, Reddit.  A user could try to include a malicious string in a comment such as: `<img src onerror='alert("haxor")'>`.  If this were rendered as is, in an HTML page, it would pop up an annoying message to the user.  However, to get around this, when Reddit displays the text to the user, it is escaped: `&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;` which will make the comment appear as visible text instead of HTML, as shown in <a href="#fig_sanitizing_reddit" class="figref"></a>.
+Let’s start with a simple example: a user submission to the popular internet forum, Reddit.  A user could try to include a malicious string in a comment such as:
+
+```html
+<img src onerror='alert("haxor")'>
+```
+
+If this were rendered as is, in an HTML page, it would pop up an annoying message to the user.  However, to get around this, when Reddit displays the text to the user, it is escaped:
+
+```html
+&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;
+```
+
+which will make the comment appear as visible text instead of HTML, as shown in <a href="#fig_sanitizing_reddit" class="figref"></a>.
 
 <figure id="fig_sanitizing_reddit">
   <img src="__DIR__/images/reddit.png" alt=""/>
@@ -28,7 +40,7 @@ There are a few different approaches you can use when validating input:
 The known good strategy is often the easiest and most foolproof of the given options. With this approach each input is validated against an expected type and format:
 
 * Data type, (Integers are Integers, booleans are booleans, etc)
-* Numeric values fall within an expected range (for example: a person’s age is always greater than zero and less than 150)
+* Numeric values fall within an expected range (for example: a person’s age is always greater than 0 and less than 150)
 * Field length is checked
 * Specially formatted string fields such as zipcode, phone number, and social security number are valid
 
