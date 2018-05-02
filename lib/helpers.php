@@ -42,9 +42,13 @@ function parse_markdown_chapter($filename, $part, $chapter) {
 
   $html = MarkdownExtra::defaultTransform($markdown);
 
+  $class = 'chapter';
+  if($part == 0) $class = 'frontmatter';
+  if($part == 9) $class = 'appendix';
+
   ob_start();
   ?>
-    <section class="h-entry <?= $part == 0 ? 'frontmatter' : 'chapter' ?>" id="<?= $info['id'] ?>">
+    <section class="h-entry <?= $class ?>" id="<?= $info['id'] ?>">
       <h1 class="p-name"><?= $info['name'] ?></h1>
       <data class="p-uid" value="<?= $info['id'] ?>"/>
 

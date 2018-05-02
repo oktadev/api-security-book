@@ -123,5 +123,14 @@
         "class": "chapter",
         "part": 1,
         "chapter": 7
+    },
+    {
+        "src": "9_01_authors/index.md",
+        "file": "9_01_authors/index.xhtml",
+        "id": "about-the-authors",
+        "name": "About the Authors",
+        "class": "appendix",
+        "part": 9,
+        "chapter": 1
     }
 ]

@@ -17,6 +17,8 @@ foreach($chapters as $chapterfile) {
 
   if($partnum == 0)
     $class = 'frontmatter';
+  elseif($partnum == 9)
+    $class = 'appendix';
   elseif((int)$chapternum == 0)
     $class = 'part';
   else
