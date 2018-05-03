@@ -33,7 +33,29 @@
         "name": "DOS Mitigation Strategies",
         "class": "chapter",
         "part": 1,
-        "chapter": 2
+        "chapter": 2,
+        "children": [
+            {
+                "name": "What Is a DoS Attack?",
+                "id": "dos-what-is"
+            },
+            {
+                "name": "Why are DoS Attacks So Prevalent?",
+                "id": "dos-why"
+            },
+            {
+                "name": "What are the Different Types of Denial of Service Attacks?",
+                "id": "dos-what"
+            },
+            {
+                "name": "How to Mitigate DoS Attacks",
+                "id": "dos-how"
+            },
+            {
+                "name": "Parting Shots",
+                "id": "dos-conclusion"
+            }
+        ]
     },
     {
         "src": "1_03_sanitizing_data/index.md",
