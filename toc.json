@@ -24,7 +24,45 @@
         "name": "Transport Layer Security",
         "class": "chapter",
         "part": 1,
-        "chapter": 1
+        "chapter": 1,
+        "children": [
+            {
+                "name": "A Brief History of Secure Data Transport",
+                "id": "tls-history"
+            },
+            {
+                "name": "How Does Key Exchange Work Today?",
+                "id": "tls-key-exchange"
+            },
+            {
+                "name": "Acronym Party: HTTPS/SSL/TLS",
+                "id": "tls-acronyms"
+            },
+            {
+                "name": "How Does SSL/TLS Work?",
+                "id": "tls-how"
+            },
+            {
+                "name": "Exposed Data over SSL/TLS",
+                "id": "tls-exposed-data"
+            },
+            {
+                "name": "SSL/TLS Server Certificates",
+                "id": "tls-server-certificates"
+            },
+            {
+                "name": "SSL/TLS Certificate Verification",
+                "id": "tls-certificate-verification"
+            },
+            {
+                "name": "SSL/TLS Best Practices",
+                "id": "tls-best-practices"
+            },
+            {
+                "name": "SSL Rating",
+                "id": "tls-ssl-rating"
+            }
+        ]
     },
     {
         "src": "1_02_dos_mitigation/index.md",
