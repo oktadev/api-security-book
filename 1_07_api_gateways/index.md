@@ -56,6 +56,7 @@ An API management platform lets you worry about other problems. Most teams have 
 
 Finally, an API management platform is excellent at logging. One of the biggest challenges for both your customers and your team is understanding “what happened?” The gateways will capture everything and most present it in a clear, consistent manner. A good debugger will save developers - both internal and external - hours of effort and frustration.
 
+<div class="break-before"></div>
 ## What Problems does a API Management Platform not Solve? {#gateways-not-solve}
 
 An API management platform does not design your API. You still need to understand your users, their goals, and the best way to accomplish those goals. That will require you to determine which use cases you are and are not solving with your API. Further, you have to decide the name and structure of appropriate endpoints and what is required to interact with them.
