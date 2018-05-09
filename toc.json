@@ -182,7 +182,25 @@
         "name": "API Gateways",
         "class": "chapter",
         "part": 1,
-        "chapter": 7
+        "chapter": 7,
+        "children": [
+            {
+                "name": "What Does an API Management Platform Manage?",
+                "id": "gateways-manage"
+            },
+            {
+                "name": "What Problems does an API Management Platform Solve?",
+                "id": "gateways-solve"
+            },
+            {
+                "name": "What Problems does a API Management Platform not Solve?",
+                "id": "gateways-not-solve"
+            },
+            {
+                "name": "Which API Management Platform is the Best?",
+                "id": "gateways-the-best"
+            }
+        ]
     },
     {
         "src": "9_01_authors/index.md",
