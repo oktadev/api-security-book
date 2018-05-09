@@ -18,13 +18,13 @@ When you’re building and deploying your API, you need to address each of these
 
 ## What Does an API Management Platform Manage? {#gateways-manage}
 
-### Lifecycles
+### Lifecycle Management
 
 Effective API management begins long before your first HTTP request. In fact, it likely begins in a document or at a whiteboard with a simple requirement and business needs. It quickly turns into a specification and then a workflow and then a data and interaction model. Eventually, it probably turns into an Open API specification, deployable code, and metrics that are carefully tracked by the team.
 
 The key technical aspect of this entire process is understanding what stage the API is in, how and where it’s deployed, and how it’s maintained. As a result, many of the gateways integrate with the cloud hosting services blend directly into your devops processes. Further, the process and these integrations are the same whether the APIs are destined for internal, partner, or even consumer use. In this area, that distinction is irrelevant.
 
-### Interfaces
+### Interface Management
 
 While it’s pedantic to note, the “I” in API stands for Interface, and it’s the only interface our users will ever interact with. A full discussion of API design is beyond the scope of this book, but the result will always be individual URLs or endpoints we need to support, which HTTP verbs are applied and how, and what parameters or properties are required for each.
 
@@ -32,7 +32,7 @@ API management platforms do not help you choose specific endpoints or which verb
 
 More advanced API management platforms go a step further. Instead of merely configuring the available endpoints via a web interface or even an API, you can upload your API specification document - like Open API, Blueprint, or RAML - and the gateway will parse the document and configure the external interface. You may even be able to integrate this with your continuous integration system to automatically deploy your API into staging, perform the appropriate checks, and prepare to deploy to production.
 
-### Access
+### Access Management
 
 Access management in an API management platform is where things begin to get more complex. Until this point, the platform has dealt with deeply technical challenges the solutions to which are expressed entirely in code. Access management - both authentication and authorization - is a combination of code, the context of the user and their use case, and business policies and practices. This makes it fundamentally more complicated.
 
@@ -42,7 +42,7 @@ As an alternative, many API gateways also include a basic OAuth 2.0 server. Your
 
 The final approach gateways take is to provide a pluggable interface for an external Identity Provider (IdP). Using an IdP is an easy way to integrate user management with a more extensive system such as Active Directory or Okta’s Universal Directory. The single biggest benefit is simplicity: users are activated or deactivated in the API gateway as they are activated or deactivated in the directory. For internal or employee-oriented scenarios, this resolves a major security requirement. Further, by centralizing the issuance of access tokens, the security team can audit and even control the policies independent of API development.
 
-### Consumption
+### Consumption Tracking
 
 As we move further away from the hard technical implementation and into the business concerns and requirements, the next area is consumption management, or more fundamentally onboarding and engagement. To expose these functions, most API management platforms include a developer portal for documentation and samples, a logging page to show usage and errors for debugging, and sample code to show how to use the API. Every component here has exactly one goal: How can a developer get started with and use your API successfully?
 
