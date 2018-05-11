@@ -164,7 +164,21 @@
         "name": "Authentication",
         "class": "chapter",
         "part": 1,
-        "chapter": 5
+        "chapter": 5,
+        "children": [
+            {
+                "name": "API Authentication Options",
+                "id": "authn-api-authentication-options"
+            },
+            {
+                "name": "Federated Identity",
+                "id": "authn-federated"
+            },
+            {
+                "name": "Recommended Best Practices for Authentication",
+                "id": "authn-best-practices"
+            }
+        ]
     },
     {
         "src": "1_06_authorization/index.md",
@@ -173,7 +187,17 @@
         "name": "Authorization",
         "class": "chapter",
         "part": 1,
-        "chapter": 6
+        "chapter": 6,
+        "children": [
+            {
+                "name": "Types of Authorization",
+                "id": "authz-types"
+            },
+            {
+                "name": "Key Takeaways",
+                "id": "authz-takeaways"
+            }
+        ]
     },
     {
         "src": "1_07_api_gateways/index.md",
