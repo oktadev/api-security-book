@@ -613,9 +613,9 @@ blockquote .author::before {
   border-top: 2pt #999 solid;
   border-bottom: 2pt #999 solid;
   padding: 8pt;
-  margin-left: 2pt;
-  margin-top: 2pt;
-  margin-bottom: 2pt;
+  margin-left: 12pt;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
   font-style: italic;
   font-size: 0.9em;
   page-break-inside: avoid;
@@ -623,6 +623,14 @@ blockquote .author::before {
 .aside h5 {
   margin-top: 0;
   font-style: normal;
+}
+
+.note {
+  margin-top: 6pt;
+  margin-bottom: 6pt;
+  border-top: 2pt #999 solid;
+  border-bottom: 2pt #999 solid;
+  padding: 8pt;
 }
 
 /* index */
