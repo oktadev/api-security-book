@@ -4,13 +4,13 @@
 
 ## Keith Casey
 
+## Randall Degges
+
 ## Brian Demers
 
 ## Joël Franusic
 
 ## Sai Maddali
-
-## Dave Nugent
 
 ## Matt Raible
 

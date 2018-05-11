@@ -1,6 +1,6 @@
 # Transport Layer Security {#tls}
 
-<div class="chapter-author">By Dave Nugent</div>
+<div class="chapter-author">By Randall Degges</div>
 
 Any discussion of API security, and more broadly security online, has to start with an understanding of Transport Layer Security (TLS) and its cryptographic underpinnings. Transport security adds privacy and integrity for messages between two parties. In common usage, it’s the ability to transmit data over a network without exposing that data to untrusted third parties.
 
