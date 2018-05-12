@@ -12,7 +12,7 @@ Most API gateway vendors call themselves API management platforms because gatewa
 
 When you’re building and deploying your API, you need to address each of these five areas, which is one of the main reasons API management platforms have taken off in recent years: they make solving these problems tangibly easier.
 
-## What Does an API Management Platform Manage? {#gateways-manage}
+## The Role of an API Management Platform {#gateways-manage}
 
 ### Lifecycle Management
 
@@ -46,7 +46,7 @@ As we move further away from the hard technical implementation and into the busi
 
 The final aspect that an API management platform addresses are the business goals. On a technical layer, this overlaps with the consumption aspects to track overall API usage but provides a more detailed look at business analytics. Therefore, it’s not just overall API consumption but identifying which API calls are the most and least important and how they map to revenue. The most advanced gateways will also include integration with web analytics platforms to track and understand where your users are struggling on setup and configuration.
 
-## What Problems does an API Management Platform Solve? {#gateways-solve}
+## Solutions Provided by an API Management Platform {#gateways-solve}
 
 An API management platform or an API gateway makes basic security easier. With a well-configured gateway, you know exactly which endpoints are open to the world and what parameters they expect. You still have to filter and validate the input according to best practices, but the attack surface is a fraction of what it would be otherwise.
 
@@ -57,7 +57,7 @@ An API management platform lets you worry about other problems. Most teams have 
 Finally, an API management platform is excellent at logging. One of the biggest challenges for both your customers and your team is understanding “what happened?” The gateways will capture everything and most present it in a clear, consistent manner. A good debugger will save developers - both internal and external - hours of effort and frustration.
 
 <div class="break-before"></div>
-## What Problems does a API Management Platform not Solve? {#gateways-not-solve}
+## Problems Your API Management Platform Won't Solve {#gateways-not-solve}
 
 An API management platform does not design your API. You still need to understand your users, their goals, and the best way to accomplish those goals. That will require you to determine which use cases you are and are not solving with your API. Further, you have to decide the name and structure of appropriate endpoints and what is required to interact with them.
 
@@ -67,7 +67,7 @@ The success of your API is also not driven by your API management platform. From
 
 And finally, an API management platform will not establish governance policies for you. When large companies begin an API program or begin to coordinate API efforts, you have to create and enforce policies for tracking APIs lifecycle and development, consistent and predictable naming of endpoints and parameters, understanding and applying security procedures, and publishing them for each audience. These are all leadership and management issues you need to consider in addition to API gateway.
 
-## Which API Management Platform is the Best? {#gateways-the-best}
+## API Management Platform Comparison {#gateways-the-best}
 
 This is a much more complex question and depends on your use case, budget, and familiarity. If your infrastructure is entirely on AWS, Azure, or Google Cloud, using their respective gateways is a safe choice.
 

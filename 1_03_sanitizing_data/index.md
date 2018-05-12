@@ -194,12 +194,11 @@ You can see right away: request headers are user input too.  Imagine for a momen
 
 Further, the User-Agent could be visible from an internal web application that doesn’t sanitize the User-Agent values before displaying them. In this case, an HTTP client could maliciously modify their User-Agent to any JavaScript code they want which would then be executed in an internal user’s browser via XSS.
 
-
 As these examples illustrate, even sanitizing relatively innocuous inputs is an important part of an overall security strategy.
 
 ## Best Practices for Secure Data {#sanitizing-best-practices}
 
-While this chapter provides an overview of a few common types of attacks; there are many more out there.
+While this chapter provides an overview of a few common types of attacks, there are many more out there.
 
 First, you don’t need to be an expert to prevent these attacks, but you do need to have some knowledge of them. The Open Web Application Security Project at <a href="https://owasp.org" class="url">OWASP.org</a> is a great source information and examples on how to secure your application, often in multiple programming languages.
 

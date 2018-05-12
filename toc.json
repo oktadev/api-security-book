@@ -47,15 +47,15 @@
                 "id": "tls-exposed-data"
             },
             {
-                "name": "SSL/TLS Server Certificates",
+                "name": "Server Certificates",
                 "id": "tls-server-certificates"
             },
             {
-                "name": "SSL/TLS Certificate Verification",
+                "name": "Certificate Verification",
                 "id": "tls-certificate-verification"
             },
             {
-                "name": "SSL/TLS Best Practices",
+                "name": "Best Practices",
                 "id": "tls-best-practices"
             },
             {
@@ -88,10 +88,6 @@
             {
                 "name": "How to Mitigate DoS Attacks",
                 "id": "dos-how"
-            },
-            {
-                "name": "Parting Shots",
-                "id": "dos-conclusion"
             }
         ]
     },
@@ -209,19 +205,19 @@
         "chapter": 7,
         "children": [
             {
-                "name": "What Does an API Management Platform Manage?",
+                "name": "The Role of an API Management Platform",
                 "id": "gateways-manage"
             },
             {
-                "name": "What Problems does an API Management Platform Solve?",
+                "name": "Solutions Provided by an API Management Platform",
                 "id": "gateways-solve"
             },
             {
-                "name": "What Problems does a API Management Platform not Solve?",
+                "name": "Problems Your API Management Platform Won't Solve",
                 "id": "gateways-not-solve"
             },
             {
-                "name": "Which API Management Platform is the Best?",
+                "name": "API Management Platform Comparison",
                 "id": "gateways-the-best"
             }
         ]
