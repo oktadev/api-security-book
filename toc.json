@@ -31,7 +31,7 @@
                 "id": "tls-history"
             },
             {
-                "name": "How Does Key Exchange Work Today?",
+                "name": "How Key Exchange Works Today",
                 "id": "tls-key-exchange"
             },
             {
@@ -39,7 +39,7 @@
                 "id": "tls-acronyms"
             },
             {
-                "name": "How Does SSL/TLS Work?",
+                "name": "Establishing a SSL/TLS Session",
                 "id": "tls-how"
             },
             {
@@ -82,7 +82,7 @@
                 "id": "dos-why"
             },
             {
-                "name": "What are the Different Types of Denial of Service Attacks?",
+                "name": "Types of Denial of Service Attacks",
                 "id": "dos-what"
             },
             {
@@ -140,7 +140,7 @@
                 "id": "api-keys-private"
             },
             {
-                "name": "\"What Kind of API Token Should I Use?\"",
+                "name": "Choosing a Type of API Token",
                 "id": "api-keys-what-kind"
             },
             {

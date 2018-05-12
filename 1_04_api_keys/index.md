@@ -44,7 +44,7 @@ By pulling sensitive credentials from environment variables, which can be manage
 
 Using environment variables to store secrets is an incredibly important first step to take in securing your code.
 
-## "What Kind of API Token Should I Use?" {#api-keys-what-kind}
+## Choosing a Type of API Token {#api-keys-what-kind}
 
 Now that we’ve covered general advice for storing and using API tokens, let’s review common options for securing your API. We’ll cover the different types of API tokens, touch on the advantages and disadvantages of each, and summarize with suggestions and a recommended approach.
 
@@ -108,6 +108,7 @@ Finally, an interesting emerging technique that I’m keeping my eye on is the b
 
 The basic idea with “channel binding” is to tie an API token to a specific TLS session. In practice this would mean writing your API to issue tokens that can only be used in the same TLS session. This way, if an API token is compromised from a client, an attacker can’t move that token to another client or machine because they would have a different TLS session for the initial issuer. This still isn’t foolproof but the work and effort for the attacker just multiplied.
 
+<div class="break-before"></div>
 ## Key Takeaways for Managing API Credentials
 
 In closing, here is my best advice for managing API credentials:

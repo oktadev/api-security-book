@@ -20,7 +20,8 @@ Also, if an attacker knows that a service provider pays for inbound bandwidth, i
 
 Finally, an attack might be carried out for political reasons. This type of attack is akin to a political protest where protesters might block the door of a business that offends their political sensibilities. In 2011, a group known as the [Syrian Electronic Army](https://www.cnn.com/2013/04/24/tech/syrian-electronic-army/index.html) worked to support the government of Syrian President Bashar al-Assad by targeting political opposition groups. In October of last year, the Czech Parliamentary election was the [target of an attack](https://sputniknews.com/europe/201710231058456317-czech-election-hit-cyberattack/) meant to disrupt the counting of votes. Given all these motivations, it’s easy to see why so many API services come under attack.
 
-## What are the Different Types of Denial of Service Attacks? {#dos-what}
+## Types of Denial of Service Attacks {#dos-what}
+
 There are three main types of DoS attacks:
 
 ### 1. Application-layer Flood

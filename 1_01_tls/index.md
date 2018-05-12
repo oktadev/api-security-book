@@ -21,7 +21,7 @@ Historically, secure information exchange wasn’t simple. Ciphers and cryptogra
 
 The problem of a shared code book or cipher persisted for millennia. To ensure that each party would be able to encode/decode the message successfully, a secret “key” needs to be exchanged, for example by courier or diplomatic bag. By working off the same key, the parties to the message exchange would then be able to encode/decode their data. However, if a nefarious actor were able to gain access to the secret key (for example, by bribing the courier) then all past and future communication could be compromised.
 
-## How Does Key Exchange Work Today? {#tls-key-exchange}
+## How Key Exchange Works Today {#tls-key-exchange}
 
 Current hybrid cryptosystems like SSL/TLS use symmetric key algorithms (they are generally faster than asymmetric algorithms.) Symmetric key algorithms require a shared secret, exchanged via key-exchange algorithm.
 
@@ -37,7 +37,7 @@ Now that we’re up to speed on the basics of key exchange, let’s discuss some
 
 In this article, I use “SSL/TLS” to avoid ambiguity that the term SSL causes. However, your implementations should always use TLS.
 
-## How Does SSL/TLS Work? {#tls-how}
+## Establishing a SSL/TLS Session {#tls-how}
 
 When an SSL/TLS connection needs to be made between a client (a browser, or an application attempting to access an API) and a server (a web server, for example, or an API endpoint) it follows a number of steps. The TLS spec, published by the IETF Transport Layer Security Working Group, gives an overview of these steps.
 
