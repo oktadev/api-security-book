@@ -41,12 +41,7 @@ In this article, I use “SSL/TLS” to avoid ambiguity that the term SSL causes
 
 When an SSL/TLS connection needs to be made between a client (a browser, or an application attempting to access an API) and a server (a web server, for example, or an API endpoint) it follows a number of steps. The TLS spec, published by the IETF Transport Layer Security Working Group, gives an overview of these steps.
 
-Here is a visual representation of how the client or “sender” and server or “receiver” set up an SSL/TLS connection:
-
-<figure id="fig_tls_">
-  <img src="__DIR__/images/" alt=""/>
-  <figcaption></figcaption>
-</figure>
+In <a href="#fig_tls_sequence_diagram" class="figref"></a> we show a visual representation of how the client or “sender” and server or “receiver” set up an SSL/TLS connection.
 
 Let’s walk through the steps at a high level:
 
@@ -58,10 +53,16 @@ Your client (browser or application) will initiate a TCP connection with the ser
 
 The SSL/TLS handshake takes place once a TCP connection is established.
 
+<figure id="fig_tls_sequence_diagram">
+  <img src="__DIR__/images/tls-sequence-diagram.png" alt=""/>
+  <figcaption>TLS Sequence Diagram</figcaption>
+</figure>
+
 **ClientHello**
 
 The client sends a “ClientHello” message, which lists the versions of SSL/TLS the client is capable of, what ciphersuites it has available, and any compression types available.
 
+<div class="break-before"></div>
 **ServerHello and Certificate Response**
 
 The server responds with the same information as the client, and sends the server’s certificate back to the client as well.
@@ -90,7 +91,7 @@ However, even though application data transmitted over a properly-established TL
 
 In addition to the data listed above, additional information may be inferred based on the timing of network requests. Outdated SSL/TLS versions have additional identified vulnerabilities, and in the future one must anticipate the TLS spec will be versioned to ameliorate any vulnerabilities identified in the future.
 
-## SSL/TLS Server Certificates {#tls-server-certificates}
+## Server Certificates {#tls-server-certificates}
 
 You’ve seen that SSL/TLS server certificates are integral to the SSL/TLS handshake. They help the client verify that the server is who they appear to be, which helps prevent third parties impersonating the server. But what are certificates, anyway? How are they generated, and why do the clients trust them?
 
@@ -112,7 +113,7 @@ This is called a chain of trust, and certificates are verified on the web in the
 
 Recently there has been an effort to spread adoption of HTTPS by making generating and installing certificates as easy as possible. [Amazon Certificate Manager](https://aws.amazon.com/certificate-manager/) and [Let’s Encrypt](https://letsencrypt.org/) are two certificate authorities who make it easy to create and manage trusted certificates for free.
 
-## SSL/TLS Certificate Verification {#tls-certificate-verification}
+## Certificate Verification {#tls-certificate-verification}
 
 Now that we understand the importance of trusted certificates and why certificate authorities are necessary, let’s walk through the missing middle step: how a client verifies a server’s SSL/TLS certificate.
 
@@ -120,18 +121,18 @@ First, the client gets the server’s certificate as part of the SSL/TLS handsha
 
 The client checks to ensure that the server’s certificate is not expired and that the domain name or IP address on the certificate matches the server’s information. Then, the client attempts to verify that the server’s certificate has been properly signed by the certificate authority who authorized it. Due to the nature of asymmetric encryption, the client is able to do this using the information within the server’s response -- without even contacting the certificate authority.
 
-It’s unlikely that the server’s certificate is signed directly by a root certificate authority that is trusted by the client. However, the client can trust any number of intermediate certificate authorities, as long as the trust chain eventually leads back to one of the client’s trusted root certificates:
+It’s unlikely that the server’s certificate is signed directly by a root certificate authority that is trusted by the client. However, the client can trust any number of intermediate certificate authorities, as long as the trust chain eventually leads back to one of the client’s trusted root certificates, as illustrated in <a href="#fig_tls_certificate_chain" class="figref"></a>.
+
+For each intermediate certificate, the client completes the same process: it verifies the issuer’s name matches the certificate owner’s name, and uses the signature and public key to verify that the certificate is properly signed.
 
 <figure id="fig_tls_certificate_chain">
   <img src="__DIR__/images/certificate-chain.png" alt=""/>
   <figcaption>Illustrating the chain of trust from a root CA through an intermediate certificate</figcaption>
 </figure>
 
-For each intermediate certificate, the client completes the same process: it verifies the issuer’s name matches the certificate owner’s name, and uses the signature and public key to verify that the certificate is properly signed.
-
 Eventually, in a successful transaction, the client will come to a self-signed root certificate that the client implicitly trusts. At this point, the client has built a cryptographic chain of trust to the server, and the SSL/TLS handshake can proceed.
 
-## SSL/TLS Best Practices {#tls-best-practices}
+## Best Practices {#tls-best-practices}
 
 Hopefully this chapter has convinced you of the ease and importance of implementing SSL/TLS into your public internet application infrastructure. However, even when using SSL/TLS, organizations can be subject to compromise if best practices are not followed. Let’s go over a few of the big ones:
 
