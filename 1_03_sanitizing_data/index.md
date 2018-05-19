@@ -74,31 +74,31 @@ A blacklist, of course, is the exact opposite of a whitelist. A blacklist can be
 Escaping input is one of the easiest and best ways to deal with free-form text.  Essentially, instead of trying to determine the parts of the input that are safe (as with the above strategies), you assume the input is unsafe. There are a few different ways to encode strings depending on how the value is used:
 
 #### HTML/XML Encoding
-Example Input:<br>
+Example Input:<br/>
 `<img src onerror='alert("haxor")'>`
 
-Result:<br>
+Result:<br/>
 `&lt;img src onerror=&#39;alert(&quot;haxor&quot;)&#39;&gt;`
 
 #### HTML/XML Attribute Encoding
-Example Input:<br>
+Example Input:<br/>
 `<div attr="" injectedAttr="a value here"><div attr="">`
 
-Result:<br>
+Result:<br/>
 `<div attr="&quot;&nbsp;injectedAttr&#61;&quot;a&nbsp;value
 &nbsp;here&quot;&gt;&lt;div attr=&quot;">`
 
 #### JSON Encoding
-Example Input:<br>
+Example Input:<br/>
 `{"key": "", anotherKey": "anotherValue"}`
 
-Result:<br>
+Result:<br/>
 `{"key": "\", anotherKey\": \"anotherValue\""}`
 
 #### Base64 Encoding
-Example Input:<br>`any random string or binary data`
+Example Input:<br/>`any random string or binary data`
 
-Result:<br>
+Result:<br/>
 `YW55IHJhbmRvbSBzdHJpbmcgb3IgYmluYXJ5IGRhdGE=`
 
 There are ways to escape just about any format you need SQL, CSV, LDAP, etc.
@@ -143,7 +143,7 @@ A cross-site scripting attack (XSS) is an attack that executes code in a web pag
 There are [tons of resources online](https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29) that cover this topic in great detail, so I’ll only provide a basic example here. Earlier in this chapter the string `<img src onerror='alert("haxor")'>` was posted as a Reddit comment. If this string isn’t correctly escaped it would have resulted in an annoying popup, shown in <a href="#fig_sanitizing_alert" class="figref"></a>.
 
 <figure id="fig_sanitizing_alert">
-  <img src="__DIR__/images/alert.png" alt="" style="width:80%;">
+  <img src="__DIR__/images/alert.png" alt="" style="width:80%;"/>
   <figcaption>A JavaScript alert popup</figcaption>
 </figure>
 

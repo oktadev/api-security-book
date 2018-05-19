@@ -20,7 +20,7 @@ backcover
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif|Lato|Source+Code+Pro:400,700);
 
 @page {
-  margin: 15mm 15mm 25mm 15mm;
+  margin: 20mm 15mm 20mm 15mm;
   size: 148mm 210mm;
 
   @footnotes {

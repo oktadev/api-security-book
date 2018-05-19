@@ -76,7 +76,7 @@ OAuth 2.0 is a delegated authorization framework which is ideal for APIs. It ena
 
 OAuth is like a hotel key card, but for apps. If you have a hotel key card, you can get access to your room, the business center, and potentially the gym. How do you get a hotel key card? You have to do an authentication process at the front desk to get it. After authenticating and obtaining the keycard, you can only access the places and things the hotel has authorized you to use.
 
-<figure id="fig_authn_federated_identity">
+<figure id="fig_authn_hotel_key_card">
   <img src="__DIR__/images/hotel-key-card.jpg" alt=""/>
   <figcaption>OAuth is like a hotel key card, but for apps!</figcaption>
 </figure>
